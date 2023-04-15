@@ -25,6 +25,15 @@ nav  {
   margin-right: 20px;
 }
 
+.banner {
+  background-image:url("./assests/1203prison.jpg");                                          
+  display: flex;                                                                                   
+  flex-flow: column;                                                                               
+  align-items: center;                                                                             
+  justify-content: center;                                                                         
+  height: 550px;    
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
