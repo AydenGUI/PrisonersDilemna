@@ -7,8 +7,8 @@ function App() {
       <nav>
         <i><h2>The Prisoners Dilemna</h2></i>
         <ul class="nav-links">
-          <li class="nav-item"><a href="#">Login</a></li>                             
-          <li class="nav-item"><a href="#">Create Account</a></li>    
+          <li class="nav-item"><button className = "btn"><a href="#">Login</a></button></li>                             
+          <li class="nav-item"><button className = "btn"><a href="#">Create Account</a></button></li>    
         </ul>
       </nav>
       <header className="App-header">
