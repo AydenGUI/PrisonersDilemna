@@ -27,11 +27,12 @@ nav  {
 
 .banner {
   background-image:url("./assests/1203prison.jpg");                                          
+  background-position: center bottom;
   display: flex;                                                                                   
   flex-flow: column;                                                                               
   align-items: center;                                                                             
   justify-content: center;                                                                         
-  height: 550px;    
+  height: 700px;
 }
 
 .App-header {
