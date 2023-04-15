@@ -2,6 +2,28 @@
   text-align: center;
 }
 
+nav  {
+  display: flex;
+  justify-content: space-between;
+  background: #5A5A5A;
+  align-items: center;
+  padding-left: 15px;
+}
+
+.nav-links {                                                                                    
+  display: flex;                                                                                
+  list-style-type: none;                                                                        
+  padding: 10px;                                                                       
+}    
+
+.nav-item a {
+  padding: 10px;
+  text-decoration: none;
+  color: white;
+  background: #10105a;
+  border-radius: 5px;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
