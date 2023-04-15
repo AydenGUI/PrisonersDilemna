@@ -11,12 +11,13 @@ function App() {
           <li class="nav-item"><button className = "btn"><a href="#">Create Account</a></button></li>    
         </ul>
       </nav>
+
       <div class="banner">
-        // stuff goes on top of the banner here
+        {/* // stuff goes on top of the banner here */}
       </div>
-      <header className="App-header">
-        
-      </header>
+
+      {/* <header className="App-header">      */}
+      {/* </header> */}
     </div>
   );
 }
