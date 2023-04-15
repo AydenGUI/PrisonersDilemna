@@ -11,8 +11,11 @@ function App() {
           <li class="nav-item"><a href="#">Create Account</a></li>    
         </ul>
       </nav>
+      <div class="banner">
+        // stuff goes on top of the banner here
+      </div>
       <header className="App-header">
-        <img src={background} className="Background" alt="prison" />
+        
       </header>
     </div>
   );
