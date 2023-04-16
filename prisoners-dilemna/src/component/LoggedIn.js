@@ -17,6 +17,7 @@ function LoggedIn() {
                 <li class="nav-item"><Link to="/Items">Items</Link></li>
                 <li class="nav-item"><Link to="/CreateItems">Create Items</Link></li>
                 <li class="nav-item"><Link to="/UpdateItems">Update Items</Link></li>
+                <li class="nav-item"><Link to="/DeleteItems">Delete Items</Link></li>
             </ul>
 
             {/* // stuff goes on top of the banner here */}
