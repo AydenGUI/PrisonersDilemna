@@ -1,5 +1,6 @@
 import background from '../assests/1203prison.jpg';
-import './Home.css';
+import { Link } from 'react-router-dom';
+import './LoggedIn.css';
 
 function LoggedIn() { 
     return (
@@ -7,11 +8,15 @@ function LoggedIn() {
         <nav>
             <i><h2>The Prisoners Dilemna</h2></i>
             <ul class="nav-links">
-            <li class="nav-item"><a href="/">Log Out</a></li>   
+            <li class="nav-item"><Link to="/">Log Out</Link></li>   
             </ul>
         </nav>
 
         <div class="banner">
+            <ul class="nav-links">
+                <li class="nav-item"><Link to="/Items">Items</Link></li>
+            </ul>
+
             {/* // stuff goes on top of the banner here */}
         </div>
 
