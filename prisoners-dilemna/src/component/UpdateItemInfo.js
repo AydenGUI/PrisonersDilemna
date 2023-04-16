@@ -1,7 +1,7 @@
  import React, { useState, useEffect } from 'react';
  import { Link, useParams, useNavigate } from 'react-router-dom';
 // import axios from 'axios';
-//import '../App.css';
+import './Home.css'
 
 function UpdateItemInfo() { //props
     const [item, setItem] = useState({
@@ -57,12 +57,20 @@ function UpdateItemInfo() { //props
     };
   
     return (
+        <div className = 'Home'>
+            <nav>
+                 <i><h2>The Prisoners Dilemna</h2></i>
+                 <ul class="nav-links">
+                <li class="nav-item"><Link to="/">Log Out</Link></li>   
+                </ul>
+            </nav>
+    <div class="banner">
       <div className='UpdateItemInfo'>
         <div className='container'>
           <div className='row'>
             <div className='col-md-8 m-auto'>
               <br />
-              <Link to='/' className='btn btn-outline-warning float-left'>
+              <Link to='/LoggedIn' className='btn btn-outline-warning float-left'>
                 Show Item List
               </Link>
             </div>
@@ -75,7 +83,7 @@ function UpdateItemInfo() { //props
           <div className='col-md-8 m-auto'>
             <form noValidate onSubmit={onSubmit}>
               <div className='form-group'>
-                <label htmlFor='title'>Title</label>
+              {/* <label htmlFor='title'>Title</label> */}
                 <input
                   type='text'
                   placeholder='Title of the Item'
@@ -88,7 +96,7 @@ function UpdateItemInfo() { //props
               <br />
   
               <div className='form-group'>
-                <label htmlFor='description'>Description</label>
+                {/* <label htmlFor='description'>Description</label> */}
                 <textarea
                   type='text'
                   placeholder='Description of the Item'
@@ -100,7 +108,7 @@ function UpdateItemInfo() { //props
               </div>
               <br />
               <div className='form-group'>
-                <label htmlFor='description'>Item</label>
+                {/* <label htmlFor='description'>Item</label> */}
                 <textarea
                   type='text'
                   placeholder='Item image'
@@ -113,7 +121,7 @@ function UpdateItemInfo() { //props
               <br />
   
               <div className='form-group'>
-                <label htmlFor='published_date'>Published Date</label>
+                {/* <label htmlFor='published_date'>Published Date</label> */}
                 <input
                   type='text'
                   placeholder='Published Date'
@@ -134,6 +142,8 @@ function UpdateItemInfo() { //props
             </form>
           </div>
         </div>
+      </div>
+      </div>
       </div>
     );
   
