@@ -52,7 +52,7 @@ const CreateItem = (props) => {
         <div className='row'>
           <div className='col-md-8 m-auto'>
             <br />
-            <Link to='/' className='btn btn-outline-warning float-left'>
+            <Link to='/Loggedin' className='btn btn-outline-warning float-left'>
               Show Item List
             </Link>
           </div>
