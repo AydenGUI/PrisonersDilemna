@@ -7,13 +7,11 @@ function LoggedIn() {
         <nav>
             <i><h2>The Prisoners Dilemna</h2></i>
             <ul class="nav-links">
-            <li class="nav-item"><a href="/">Login</a></li>                             
-            <li class="nav-item"><a href="/">Create Account</a></li>    
+            <li class="nav-item"><a href="/">Log Out</a></li>   
             </ul>
         </nav>
 
         <div class="banner">
-          <h1>LOGGED IN</h1>
             {/* // stuff goes on top of the banner here */}
         </div>
 
