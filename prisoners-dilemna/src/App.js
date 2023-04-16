@@ -4,6 +4,7 @@ import Home from './component/Home'
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import LoggedIn from './component/LoggedIn';
 import Item from './component/Item';
+import CreateItem from './component/CreateItem';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route exact path='/' element={<Home/>}/>
         <Route exact path='/LoggedIn' element={<LoggedIn/>}/>          
         <Route exact path='/Items' element={<Item/>}/>
+        <Route exact path='/Create-Item' element={<CreateItem/>}/>
         </Routes>
       </div>
     </Router>
