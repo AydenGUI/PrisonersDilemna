@@ -23,7 +23,7 @@ const cellItems = [
     },
   ];
   
-  export default items;
+  export default cellItems;
 
   class Item {
     constructor(title, description, imageLink, publishedDate) {
