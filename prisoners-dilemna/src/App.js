@@ -3,6 +3,7 @@ import './App.css';
 import Home from './component/Home'
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import LoggedIn from './component/LoggedIn';
+import Item from './component/Item';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Routes>
         <Route exact path='/' element={<Home/>}/>
         <Route exact path='/LoggedIn' element={<LoggedIn/>}/>          
+        <Route exact path='/Items' element={<Item/>}/>
         </Routes>
       </div>
     </Router>

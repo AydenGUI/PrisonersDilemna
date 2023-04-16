@@ -1,4 +1,5 @@
 import background from '../assests/1203prison.jpg';
+import { Link } from 'react-router-dom';
 import './Home.css';
 
 function Home() { 
@@ -7,8 +8,8 @@ function Home() {
         <nav>
             <i><h2>The Prisoners Dilemna</h2></i>
             <ul class="nav-links">
-            <li class="nav-item"><a href="/LoggedIn">Login</a></li>                             
-            <li class="nav-item"><a href="/LoggedIn">Create Account</a></li>    
+            <li class="nav-item"><Link to="/LoggedIn">Login</Link></li>                             
+            <li class="nav-item"><Link to="/LoggedIn">Create Account</Link></li>    
             </ul>
         </nav>
 
