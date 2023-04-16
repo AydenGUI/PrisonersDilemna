@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import LoggedIn from './component/LoggedIn';
 import Item from './component/Item';
 import UpdateItemInfo from './component/UpdateItemInfo';
+import CreateItem from './component/CreateItem';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route exact path='/' element={<Home/>}/>
         <Route exact path='/LoggedIn' element={<LoggedIn/>}/>          
         <Route exact path='/Items' element={<Item/>}/>
+        <Route exact path='/CreateItems'element={<CreateItem/>}/>
         <Route exact path='/UpdateItems' element={<UpdateItemInfo/>}/>
         </Routes>
       </div>
