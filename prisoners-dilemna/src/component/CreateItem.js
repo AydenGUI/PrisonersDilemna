@@ -71,7 +71,7 @@ const CreateItem = (props) => {
                   onChange={onChange}
                 />
               </div>
-              <br />
+             
 
               <div className='form-group'>
                 <input
