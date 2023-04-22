@@ -6,6 +6,9 @@ const port = process.env.PORT || 4000;
 const mongoose = require('mongoose');
 const cors = require('cors');
 
+const items = require('./client/src/routes/api/Items');
+App.use('/api/items', items);
+
 // Connect Database
 server.use(cors({ origin: true, credentials: true}));
 
