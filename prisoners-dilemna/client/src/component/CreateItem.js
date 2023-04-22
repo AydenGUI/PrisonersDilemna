@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import './Home.css'
 //import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { cellItems } from './CellItems';
-import Item from './Item';
+// import { cellItems } from './CellItems';
+//import Item from './Item';
 
 const CreateItem = (props) => {
   // Define the state with useState hook
@@ -22,9 +22,9 @@ const CreateItem = (props) => {
 
    const onSubmit = (e) => {
     e.preventDefault();
-    const newItem = new Item(item.title, item.description, item.image, item.published_date);
-    cellItems.push(newItem);
-    console.log(newItem);
+    // const newItem = new Item(item.title, item.description, item.image, item.published_date);
+    // cellItems.push(newItem);
+    // console.log(newItem);
   //    axios
   //      .post('http://localhost:8082/api/items', item)
   //      .then((res) => {

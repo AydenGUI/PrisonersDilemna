@@ -20,5 +20,6 @@ import './LoggedIn.css';
       default: Date.now,
     },
   });
-  module.exports = Item = mongoose.model('item', ItemSchema);
-//  export default Item;
+  const Item = mongoose.model('item', ItemSchema);
+  module.exports = Item;
+  // export default Item;
