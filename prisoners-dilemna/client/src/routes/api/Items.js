@@ -8,5 +8,10 @@ router.get('/:id', (req, res) => {res.send('testing get /:id route')});
 router.post('/', (req, res) => {res.send('testing post / route')});
 router.put('/:id', (req, res) => {res.send('testing get /:id route')});
 
+router.post('/', (req, res) => {
+    Item.create(req.body)
+    .then((item) => res.json({msg: 'Item added successfully'}))
+    .catch((err) => res.status(400).json({error: 'Unable to add this item'}));
+});
 
 module.exports = router;
