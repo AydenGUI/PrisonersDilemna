@@ -9,6 +9,8 @@ const cors = require('cors');
 const items = require('./routes/api/Items');
 server.use('/api/items', items);
 
+const users = require('./routes/api/Users');
+server.use('/api/users', users);
 // Connect Database
 server.use(cors({ origin: true, credentials: true}));
 
@@ -24,7 +26,7 @@ mongoose.connect(conn_str,{
   useNewUrlParser : true
 })
 .then(() => {
-  server.listen(port)
+  server.listen(port, 'localhost')
   console.log("MongoDB Connection Succeeded...")
 })
 .catch(err => {
