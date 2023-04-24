@@ -4,7 +4,8 @@ const port = 3000;
 const mongoose = require('mongoose');
 const cors = require('cors');
 const UserModel = require("./models/Users");
-const userRouter = express.Router();
+const ItemModel = require("./models/Item");
+//const userRouter = express.Router();
 
 // Connect Database
 server.use(express.json());
@@ -34,6 +35,21 @@ server.post("/api/users", async(req, res) => {
   try{
       await user.save();
       res.send(user);
+  }
+  catch(err){
+      console.log(err);
+      console.log(req.body)
+      res.status(500).send(error);
+  }
+});
+
+server.post("/api/items", async(req, res) => {
+
+  const item = new ItemModel(req.body);
+
+  try{
+      await item.save();
+      res.send(item);
   }
   catch(err){
       console.log(err);

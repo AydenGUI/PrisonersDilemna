@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css'
-//import axios from 'axios';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 // import { cellItems } from './CellItems';
 //import Item from './Item';
@@ -9,38 +9,46 @@ import { useNavigate } from 'react-router-dom';
 const CreateItem = (props) => {
   // Define the state with useState hook
   const navigate = useNavigate();
-  const [item, setItem] = useState({
-    title: '',
-    description: '',
-    published_date: '',
-    image: '',
-  });
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [image, setImage] = useState('');
+  const [updated_Date, setUpdated_Date] = useState('');
+ 
 
-  const onChange = (e) => {
-    setItem({ ...item, [e.target.name]: e.target.value });
+  const handleTitleChange = (event) => {
+    setTitle(event.target.value);
   };
 
-   const onSubmit = (e) => {
-    e.preventDefault();
-    // const newItem = new Item(item.title, item.description, item.image, item.published_date);
-    // cellItems.push(newItem);
-    // console.log(newItem);
-  //    axios
-  //      .post('http://localhost:8082/api/items', item)
-  //      .then((res) => {
-  //        setItem({
-  //          title: '',
-  //         description: '',
-  //         published_date: '',
-  //         image: '',
-  //       });
+  const handleDescriptionChange = (event) => {
+    setDescription(event.target.value);
+  };
 
-  //       // Push to /
-  //      navigate('/');
-  //     })
-  //    .catch((err) => {
-  //      console.log('Error in CreateItem!');
-  //   });
+  const handleImageChange = (event) => {
+    setImage(event.target.value);
+  };
+
+  const handleUpdated_DateChange = (event) => {
+    setUpdated_Date(event.target.value);
+  };
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+    // Handle form submission
+
+    const data = {
+        title: title,
+        description: description,
+        image: image,
+        updated_Date: updated_Date
+      };
+      
+      axios.post('http://localhost:3001/api/items', data)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+    });
   };
 
   return (
@@ -72,8 +80,8 @@ const CreateItem = (props) => {
                   placeholder='Title of the Item'
                   name='title'
                   className='form-control'
-                  value={item.title}
-                  onChange={onChange}
+                  value={title}
+                  onChange={handleTitleChange}
                 />
               </div>
              
@@ -84,18 +92,18 @@ const CreateItem = (props) => {
                   placeholder='Describe this item'
                   name='description'
                   className='form-control'
-                  value={item.description}
-                  onChange={onChange}
+                  value={description}
+                  onChange={handleDescriptionChange}
                 />
               </div>
               <div className='form-group'>
                 <input
                   type='date'
-                  placeholder='published_date'
-                  name='published_date'
+                  placeholder='updated_Date'
+                  name='updated_Date'
                   className='form-control'
-                  value={item.published_date}
-                  onChange={onChange}
+                  value={updated_Date}
+                  onChange={handleUpdated_DateChange}
                 />
               </div>
               <div className='form-group'>
@@ -104,8 +112,8 @@ const CreateItem = (props) => {
                   placeholder='Image of this Item'
                   name='image'
                   className='form-control'
-                  value={item.image}
-                  onChange={onChange}
+                  value={image}
+                  onChange={handleImageChange}
                 />
               </div>
 
