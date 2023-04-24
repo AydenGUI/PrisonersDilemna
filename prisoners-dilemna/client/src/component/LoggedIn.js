@@ -4,6 +4,7 @@ import './LoggedIn.css';
 import React, { useState } from 'react';
 import axios from 'axios';
 
+
 function LoggedIn() { 
    
   const [email, setEmail] = useState('');
@@ -17,6 +18,8 @@ function LoggedIn() {
     setPassword(event.target.value);
   };
 
+
+  // Might need to add async and await for this function
   const handleSubmit = (event) => {
     event.preventDefault();
     // Handle form submission
@@ -25,8 +28,8 @@ function LoggedIn() {
         email: email,
         password: password
       };
-  
-      axios.post('/api/insert', data)
+      
+      axios.post('http://localhost:3001/api/users', data)
         .then((response) => {
           console.log(response);
         })
