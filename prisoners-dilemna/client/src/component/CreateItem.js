@@ -42,7 +42,7 @@ const CreateItem = (props) => {
         updated_Date: updated_Date
       };
       
-      axios.post('http://localhost:3001/api/items', data)
+      axios.post('http://localhost:3001/api/items/create-item', data)
         .then((response) => {
           console.log(response);
         })

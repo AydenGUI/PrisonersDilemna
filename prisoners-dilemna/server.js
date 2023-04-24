@@ -43,7 +43,7 @@ server.post("/api/users", async(req, res) => {
   }
 });
 
-server.post("/api/items", async(req, res) => {
+server.post("/api/items/create-item", async(req, res) => {
 
   const item = new ItemModel(req.body);
 
