@@ -7,6 +7,8 @@ import LoggedIn from './component/LoggedIn';
 import UpdateItemInfo from './component/UpdateItemInfo';
 import CreateItem from './component/CreateItem';
 import DeleteItem from './component/DeleteItem';
+import SignUp from './component/SignUp';
+import LogIn from './component/LogIn';
 
 
 function App() {
@@ -15,7 +17,9 @@ function App() {
       <div>
         <Routes>
         <Route exact path='/' element={<Home/>}/>
-        <Route exact path='/LoggedIn' element={<LoggedIn/>}/>          
+        <Route exact path='/LoggedIn' element={<LoggedIn/>}/>
+        <Route exact path='/SignUp' element={<SignUp/>}/>          
+        <Route exact path='/LogIn' element={<LogIn/>}/>          
         {/* <Route exact path='/Items' element={<Item/>}/> */}
         <Route exact path='/CreateItems'element={<CreateItem/>}/>
         <Route exact path='/UpdateItems' element={<UpdateItemInfo/>}/>

@@ -4,10 +4,13 @@ const mongoose = require('mongoose');
     email: {
       type: String,
       required: true,
+      unique: true,
+      trim: true,
     },
     password: {
-	type: String,
-	required: true
+	    type: String,
+	    required: true,
+      minLength: 6,
     }
   });
   const User = mongoose.model("User", UserSchema);
