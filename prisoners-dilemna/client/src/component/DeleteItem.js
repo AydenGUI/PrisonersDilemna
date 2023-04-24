@@ -52,7 +52,7 @@ const DeleteItem = (props) => {
         <div className='row'>
           <div className='col-md-8 m-auto'>
             <br />
-            <Link to='/LoggedIn' className='btn btn-outline-warning float-left'>
+            <Link to='/ListItems' className='btn btn-outline-warning float-left'>
               Show Item List
             </Link>
           </div>
