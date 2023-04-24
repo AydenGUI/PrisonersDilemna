@@ -1,11 +1,10 @@
 import { Link } from 'react-router-dom';
 import './Home.css';
 import React, { useState } from 'react';
-//import axios from 'axios';
 // const Item = require("../../models/Item");
 
 function Item() { 
-
+ 
     return (
         <div className="Home">
         <nav>

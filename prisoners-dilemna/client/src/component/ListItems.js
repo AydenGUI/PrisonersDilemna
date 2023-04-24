@@ -1,8 +1,23 @@
 import { Link } from 'react-router-dom';
 import './Home.css';
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import axios from 'axios';
+
+function getItems() {
+    axios.get('http://localhost:3001/api/items/get-all')
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.log(error);
+});
+}
 
 function ListItems () {
+    useEffect(() => {
+        getItems();
+      }, []);
+
     return (
         <div className="Home">
             <nav>
@@ -15,5 +30,6 @@ function ListItems () {
             </div>
         </div>
     );
-}
+};
+
 export default ListItems;
