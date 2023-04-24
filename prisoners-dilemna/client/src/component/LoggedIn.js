@@ -29,7 +29,7 @@ function LoggedIn() {
         password: password
       };
       
-      axios.post('http://localhost:3001/api/users', data)
+      axios.post('http://localhost:4000/api/users/', data)
         .then((response) => {
           console.log(response);
         })
