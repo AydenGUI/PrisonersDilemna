@@ -35,7 +35,7 @@ function LogIn() {
         password: password
       };
       
-      axios.post('http://localhost:3001/api/users', data)
+      axios.post('http://localhost:3001/api/login-users', data)
         .then((response) => {
           console.log(response);
         })
@@ -58,11 +58,11 @@ function LogIn() {
             <form onSubmit={handleSubmit}>
         <label>
          Email:
-         <input type="email" value={email} onChange={handleEmailChange} />
+         <input type="email" value={email} onChange={handleEmailChange} required/>
         </label>
         < label>
          Password:
-            <input type="password" value={password} onChange={handlePasswordChange} />
+            <input type="password" value={password} onChange={handlePasswordChange} required/>
          </label>
         <button type="submit">Log In</button>
         </form>

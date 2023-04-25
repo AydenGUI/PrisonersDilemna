@@ -5,6 +5,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const UserModel = require("./models/Users");
 const ItemModel = require("./models/Item");
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 //const userRouter = express.Router();
 
 // Connect Database
@@ -28,7 +30,7 @@ const conn_str = 'mongodb+srv://saw31815:prisoners-dilemna@prisonerdilemma.ay7xo
 
 mongoose.set('strictQuery', false);
 
-server.post("/api/users", async(req, res) => {
+server.post("/api/create-users", async(req, res) => {
 
   const user = new UserModel(req.body);  
 //const emailToFind = req.query.email;
@@ -48,19 +50,40 @@ server.post("/api/users", async(req, res) => {
     console.log(req.body)
     res.status(500).send(err);
   }
+});
 
+server.post("/api/login-users", async(req, res) => {
 
-  // const user = new UserModel(req.body);
+  console.log("LOGIN");
+  try {
+    const {email, password} = req.body;  
+    if (!email || !password) {
+      console.log("JSON FRICKED UP");
+      return res.status(400).json({message: "Please enter all the fields"});
+    }
+    const user = await UserModel.findOne({ email });
+     if (!user) {
+      console.log("COULD NOT FIND USER");
+        return res.status(400).json({ message: 'User with this email does not exist' });
+     } 
+    
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      console.log("PASSWORD FAILED");
+      return res.status(400).send({message: "incorrect password"});
+    }
+    console.log("success?")
+    //idk about the id
+    const token = jwt.sign({id: user._id}, "passwordKey");
+    res.json({token, user: {id: user._id, email: user.email}}); 
 
-  // try{
-  //     await user.save();
-  //     res.send(user);
-  // }
-  // catch(err){
-  //     console.log(err);
-  //     console.log(req.body)
-  //     res.status(500).send(err);
-  // }
+    } 
+  catch (err) {
+    res.status(500).json({ message: err.message });
+    console.log(err);
+    console.log(req.body)
+    res.status(500).send(err);
+  }
 });
 
 server.delete("/api/items/delete-item", async(req, res) => {

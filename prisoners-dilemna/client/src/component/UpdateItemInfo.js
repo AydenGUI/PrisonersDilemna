@@ -57,7 +57,7 @@ function UpdateItemInfo() { //props
         published_date: item.published_date,
         image: item.image,
       };
-  
+      if (data.title != undefined) {
       axios
         .put(putUrl, data)
         .then((res) => {
@@ -69,7 +69,9 @@ function UpdateItemInfo() { //props
         .catch((err) => {
           console.log('Error in UpdateItemInfo!');
         });
+      } //if
     console.log("Hello");
+    navigate("/Items");
     return data;
     };
     return (

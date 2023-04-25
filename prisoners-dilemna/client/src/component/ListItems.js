@@ -38,7 +38,7 @@ function ListItems () {
           <script>
           {urlLink = `/UpdateItems/${item.title}`}
           </script>
-          <p><Link to= {urlLink} >Update Item</Link></p>
+          <a class="link"><Link to= {urlLink} >Update Item</Link></a>
         </div>
       </div>
     ));

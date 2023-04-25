@@ -35,7 +35,7 @@ function SignUp() {
         password: hash
       };
       // Make a POST request to the server
-      axios.post('http://localhost:3001/api/users', data)
+      axios.post('http://localhost:3001/api/create-users', data)
         .then((response) => {
           console.log(response);
           if (response.status == 409)
@@ -49,7 +49,7 @@ function SignUp() {
           }
       });
 
-      navigate('/LoggedIn');
+      navigate('/LogIn');
     });
   };
     
@@ -66,11 +66,11 @@ function SignUp() {
         <form onSubmit={handleSubmit}>
           <label>
             Email:
-            <input type="email" value={email} onChange={handleEmailChange} />
+            <input type="email" value={email} onChange={handleEmailChange} required/>
           </label>
           <label>
             Password:
-            <input type="password" value={password} onChange={handlePasswordChange} />
+            <input type="password" value={password} onChange={handlePasswordChange} required/>
           </label>
           <button type="submit">Sign Up</button>
         </form>
