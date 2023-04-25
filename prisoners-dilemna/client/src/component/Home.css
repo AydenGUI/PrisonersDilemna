@@ -2,6 +2,21 @@
     text-align: center;
   }
   
+  .goitem {
+    padding: 10px;
+    background: #8b8b8b;
+    border-radius: 5px;
+  }
+
+  .goitem a {
+    text-decoration: none;
+    color: #303030;
+  }
+
+  .goitem:hover {
+    background-color: #797979;
+  }
+
   nav  {
     display: flex;
     justify-content: space-between;
