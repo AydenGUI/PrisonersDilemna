@@ -53,7 +53,7 @@ function ListItems () {
                 <li class="nav-item"><Link to="/">Log Out</Link></li>   
                 </ul>
             </nav>
-            <div class="banner">
+            <div class="listBanner">
             {renderItems()}
             </div>
         </div>
