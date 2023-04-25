@@ -78,7 +78,7 @@ function UpdateItemInfo() { //props
               </Link>
             </div>
             <div className='col-md-8 m-auto'>
-              <h1 className='display-4 text-center'>Edit Item</h1>
+              <h1 className='display-4 text-center'>Edit {item.title}</h1>
               <p className='lead text-center'>Update Item's Info</p>
             </div>
           </div>
@@ -87,14 +87,14 @@ function UpdateItemInfo() { //props
             <form noValidate onSubmit={onSubmit}>
               <div className='form-group'>
               {/* <label htmlFor='title'>Title</label> */}
-                <input
+                {/* <input
                   type='text'
                   placeholder='Title of the Item'
                   name='title'
                   className='form-control'
                   value={item.title}
                   onChange={onChange}
-                />
+                /> */}
               </div>
               <br />
   
