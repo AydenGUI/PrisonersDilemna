@@ -29,7 +29,6 @@ function ListItems () {
   }, []);
 
   const renderItems = () => {
-    
     return items.map((item) => (
       <div class="cardHolder">
         <div className="card">
@@ -37,24 +36,24 @@ function ListItems () {
           <p>{item.description}</p>
           <img src={item.image} alt={item.updated_Date} />
           <script>
-          urlLink = `/UpdateItems/${item.title}`
-          console.log(urlLink);
+          console.log(item.title);
+          {urlLink = `/UpdateItems/${item.title}`}
           </script>
           <p><Link to= {urlLink} >Update Item</Link></p>
         </div>
       </div>
     ));
-  };
+  }
 
     return (
         <div className="ListItems">
             <nav>
-                <i><h2>The Prisoners Dilemma</h2></i>
+                <i><h2>The Prisoners Dilemna</h2></i>
                 <ul class="nav-links">
                 <li class="nav-item"><Link to="/">Log Out</Link></li>   
                 </ul>
             </nav>
-            <div class="listBanner">
+            <div class="banner">
             {renderItems()}
             </div>
         </div>
