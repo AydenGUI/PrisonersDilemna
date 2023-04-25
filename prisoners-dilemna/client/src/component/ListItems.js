@@ -29,14 +29,17 @@ function ListItems () {
   }, []);
 
   const renderItems = () => {
+    
     return items.map((item) => (
       <div class="cardHolder">
         <div className="card">
           <h3>{item.title}</h3>
           <p>{item.description}</p>
           <img src={item.image} alt={item.updated_Date} />
-          console.log(item.title);
-          {urlLink = `/UpdateItems/${item.title}`}
+          <script>
+          urlLink = `/UpdateItems/${item.title}`
+          console.log(urlLink);
+          </script>
           <p><Link to= {urlLink} >Update Item</Link></p>
         </div>
       </div>
