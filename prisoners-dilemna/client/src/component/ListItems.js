@@ -17,7 +17,7 @@ function getItems() {
 function ListItems () {
     
   const [items, setItems] = useState([]);
-
+  var urlLink;
   useEffect(() => {
     axios.get('http://localhost:3001/api/items/get-all')
       .then((response) => {
@@ -35,7 +35,9 @@ function ListItems () {
           <h3>{item.title}</h3>
           <p>{item.description}</p>
           <img src={item.image} alt={item.updated_Date} />
-          <p><Link to="/UpdateItems/item.title">Update Item</Link></p>
+          console.log(item.title);
+          {urlLink = `/UpdateItems/${item.title}`}
+          <p><Link to= {urlLink} >Update Item</Link></p>
         </div>
       </div>
     ));
