@@ -38,7 +38,8 @@ function SignUp() {
       axios.post('http://localhost:3001/api/users', data)
         .then((response) => {
           console.log(response);
-          prompt(response);
+          if (response.status == 409)
+            prompt(response);
         })
         .catch((error) => {
           if (error.response == 409) {
