@@ -30,16 +30,18 @@ function ListItems () {
 
   const renderItems = () => {
     return items.map((item) => (
-      <div className="card">
-        <h3>{item.title}</h3>
-        <p>{item.description}</p>
-        <img src={item.image} alt={item.updated_Date} />
+      <div class="cardHolder">
+        <div className="card">
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+          <img src={item.image} alt={item.updated_Date} />
+        </div>
       </div>
     ));
   };
 
     return (
-        <div className="Home">
+        <div className="ListItems">
             <nav>
                 <i><h2>The Prisoners Dilemna</h2></i>
                 <ul class="nav-links">
