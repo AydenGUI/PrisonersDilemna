@@ -30,19 +30,37 @@ mongoose.set('strictQuery', false);
 
 server.post("/api/users", async(req, res) => {
 
-  const user = new UserModel(req.body);
+  const user = new UserModel(req.body);  
+//const emailToFind = req.query.email;
+  try {
+    const existingUser = await UserModel.findOne({ email: req.body.email });
 
-  
+    if (existingUser) {
+      console.log("duplicate");
+      return res.status(409).json({ message: 'User already exists' });
+    }
+    
+    await user.save();
+    res.status(201).json(user);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+    console.log(err);
+    console.log(req.body)
+    res.status(500).send(err);
+  }
 
-  try{
-      await user.save();
-      res.send(user);
-  }
-  catch(err){
-      console.log(err);
-      console.log(req.body)
-      res.status(500).send(error);
-  }
+
+  // const user = new UserModel(req.body);
+
+  // try{
+  //     await user.save();
+  //     res.send(user);
+  // }
+  // catch(err){
+  //     console.log(err);
+  //     console.log(req.body)
+  //     res.status(500).send(err);
+  // }
 });
 
 server.delete("/api/items/delete-item", async(req, res) => {
