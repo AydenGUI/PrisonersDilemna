@@ -48,7 +48,7 @@ function ListItems () {
     return (
         <div className="ListItems">
             <nav>
-                <i><h2>The Prisoners Dilemna</h2></i>
+                <i><h2><Link to="/Items">The Prisoners Dilemna</Link></h2></i>
                 <ul class="nav-links">
                 <li class="nav-item"><Link to="/">Log Out</Link></li>   
                 </ul>
