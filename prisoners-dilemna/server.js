@@ -123,14 +123,24 @@ server.get('/api/items/show-item/:title', async (req, res) => {
 });
 
 server.put("/api/items/update-item/:title", async(req, res) => {
-  
-  const item = await Item.findOne(req.params.body);
-  item.title = req.body.title || item.title;
-  item.description = req.body.description || item.description;
-  if (req.body.updated_date == item.updated_date)
+  console.log(req.params.title)
+  const item = await Item.findOne({title: req.params.title});
+  if (item) {
+    item.title = req.body.title || item.title;
+    item.description = req.body.description || item.description;
+    item.image = req.body.image || item.image;
+    if (req.body.updated_date == item.updated_date)
     item.updated_date = Date.now;
-  item.image = req.body.image || item.image;
-try {
+  } else {
+    res.status(404).send({ message: 'Item not found' });
+  }
+  // item.title = req.params.title || req.body.title || item.title;
+  // item.description = req.body.description || item.description;
+  // if (req.body.updated_date == item.updated_date)
+  //   item.updated_date = Date.now;
+  // item.image = req.body.image || item.image;
+if (item)
+  try {
   const updatedItem = await item.save();
   console.log(updatedItem);
   res.status(200).json(updatedItem);

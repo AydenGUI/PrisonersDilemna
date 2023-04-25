@@ -36,7 +36,6 @@ function ListItems () {
           <p>{item.description}</p>
           <img src={item.image} alt={item.updated_Date} />
           <script>
-          console.log(item.title);
           {urlLink = `/UpdateItems/${item.title}`}
           </script>
           <p><Link to= {urlLink} >Update Item</Link></p>
