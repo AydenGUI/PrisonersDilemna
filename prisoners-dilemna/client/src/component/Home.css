@@ -10,6 +10,55 @@
     padding-left: 15px;
   }
   
+  .DeleteItem {
+    width: 200px;
+    height: 180px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: #5A5A5A;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .CreateItem {
+    width: 200px;
+    height: 300px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: #5A5A5A;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding-right: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .UpdateItemInfo {
+    width: 200px;
+    height: 430px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    background-color: #5A5A5A;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding-right: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  
+
   .nav-links {                                                                                    
     display: flex;                                                                                
     list-style-type: none;                                                                        
