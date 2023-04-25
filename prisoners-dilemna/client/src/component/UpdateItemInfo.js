@@ -17,10 +17,12 @@ function UpdateItemInfo() { //props
     item.title = title;
   
     useEffect(() => {
+      if (item.title != undefined) {
       axios
         .get(`http://localhost:3001/api/items/show-item/${item.title}`)
         .then((res) => {
           console.log(res.data.body);
+          console.log(item.title);
           setItem({
             title: res.data.title,
             description: res.data.description,
@@ -31,8 +33,9 @@ function UpdateItemInfo() { //props
         .catch((err) => {
           console.log('Error from UpdateItemInfo');
         });
-    }, [title]);
-  
+      }
+      }, [title]);
+
     const onChange = (e) => {
       setItem({ ...item, [e.target.name]: e.target.value });
     };
@@ -50,7 +53,7 @@ function UpdateItemInfo() { //props
       axios
         .put(`http://localhost:3001/api/items/update-item/${data.title}`, data)
         .then((res) => {
-          // navigate(`/show-item/${data.title}`);
+          // navigate(`/Items`);
           console.log(res.data.body);
         })
         .catch((err) => {
@@ -78,7 +81,10 @@ function UpdateItemInfo() { //props
               </Link>
             </div>
             <div className='col-md-8 m-auto'>
-              <h1 className='display-4 text-center'>Edit {item.title}</h1>
+              <script>
+                console.log(title);
+              </script>
+              <h1 className='display-4 text-center'>Edit Item</h1>
               <p className='lead text-center'>Update Item's Info</p>
             </div>
           </div>
@@ -86,20 +92,20 @@ function UpdateItemInfo() { //props
           <div className='col-md-8 m-auto'>
             <form noValidate onSubmit={onSubmit}>
               <div className='form-group'>
-              {/* <label htmlFor='title'>Title</label> */}
-                {/* <input
+              {/* <label htmlFor='title'>Title</label>  */}
+                <input
                   type='text'
                   placeholder='Title of the Item'
                   name='title'
                   className='form-control'
                   value={item.title}
                   onChange={onChange}
-                /> */}
+                />
               </div>
               <br />
   
               <div className='form-group'>
-                {/* <label htmlFor='description'>Description</label> */}
+                <label htmlFor='description'>Description</label>
                 <textarea
                   type='text'
                   placeholder='Description of the Item'
@@ -111,7 +117,7 @@ function UpdateItemInfo() { //props
               </div>
               <br />
               <div className='form-group'>
-                {/* <label htmlFor='description'>Item</label> */}
+                <label htmlFor='description'>Item</label>
                 <textarea
                   type='text'
                   placeholder='Item image'
