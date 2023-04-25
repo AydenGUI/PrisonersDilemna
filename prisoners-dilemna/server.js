@@ -6,6 +6,7 @@ const cors = require('cors');
 const UserModel = require("./models/Users");
 const ItemModel = require("./models/Item");
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 //const userRouter = express.Router();
 
 // Connect Database
@@ -57,18 +58,21 @@ server.post("/api/login-users", async(req, res) => {
   try {
     const {email, password} = req.body;  
     if (!email || !password) {
+      console.log("JSON FRICKED UP");
       return res.status(400).json({message: "Please enter all the fields"});
     }
     const user = await UserModel.findOne({ email });
-     if (user) {
+     if (!user) {
+      console.log("COULD NOT FIND USER");
         return res.status(400).json({ message: 'User with this email does not exist' });
      } 
     
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
+      console.log("PASSWORD FAILED");
       return res.status(400).send({message: "incorrect password"});
     }
-
+    console.log("success?")
     //idk about the id
     const token = jwt.sign({id: user._id}, "passwordKey");
     res.json({token, user: {id: user._id, email: user.email}}); 
