@@ -11,9 +11,10 @@ function UpdateItemInfo() { //props
       image: '',
     });
   
-    const { id } = useParams();
-    // const { title } = useParams();
+    
+    const { title } = useParams();
     const navigate = useNavigate();
+    item.title = title;
   
     useEffect(() => {
       axios
@@ -30,7 +31,7 @@ function UpdateItemInfo() { //props
         .catch((err) => {
           console.log('Error from UpdateItemInfo');
         });
-    }, [id]);
+    }, [title]);
   
     const onChange = (e) => {
       setItem({ ...item, [e.target.name]: e.target.value });
