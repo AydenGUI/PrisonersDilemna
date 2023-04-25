@@ -6,6 +6,7 @@ const cors = require('cors');
 const UserModel = require("./models/Users");
 const ItemModel = require("./models/Item");
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 //const userRouter = express.Router();
 
 // Connect Database
@@ -57,18 +58,21 @@ server.post("/api/login-users", async(req, res) => {
   try {
     const {email, password} = req.body;  
     if (!email || !password) {
+      console.log("JSON FRICKED UP");
       return res.status(400).json({message: "Please enter all the fields"});
     }
     const user = await UserModel.findOne({ email });
-     if (user) {
+     if (!user) {
+      console.log("COULD NOT FIND USER");
         return res.status(400).json({ message: 'User with this email does not exist' });
      } 
     
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
+      console.log("PASSWORD FAILED");
       return res.status(400).send({message: "incorrect password"});
     }
-
+    console.log("success?")
     //idk about the id
     const token = jwt.sign({id: user._id}, "passwordKey");
     res.json({token, user: {id: user._id, email: user.email}}); 
@@ -133,7 +137,7 @@ server.get('/api/items/get-all', async (req, res) => {
 
 server.get('/api/items/show-item/:title', async (req, res) => {
   try {
-    const item = await ItemModel.findOne(req.params.body);
+    const item = await ItemModel.findOne({title: req.params.title});
     res.json(item);
   } catch (err) {
     console.error(err);
@@ -142,14 +146,19 @@ server.get('/api/items/show-item/:title', async (req, res) => {
 });
 
 server.put("/api/items/update-item/:title", async(req, res) => {
-  
-  const item = await Item.findOne(req.params.body);
-  item.title = req.body.title || item.title;
-  item.description = req.body.description || item.description;
-  if (req.body.updated_date == item.updated_date)
+  console.log(req.params.title)
+  const item = await Item.findOne({title: req.params.title});
+  if (item) {
+    item.title = req.body.title || item.title;
+    item.description = req.body.description || item.description;
+    item.image = req.body.image || item.image;
+    if (req.body.updated_date == item.updated_date)
     item.updated_date = Date.now;
-  item.image = req.body.image || item.image;
-try {
+  } else {
+    res.status(404).send({ message: 'Item not found' });
+  }
+if (item)
+  try {
   const updatedItem = await item.save();
   console.log(updatedItem);
   res.status(200).json(updatedItem);
