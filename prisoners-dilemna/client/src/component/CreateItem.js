@@ -47,7 +47,13 @@ const CreateItem = (props) => {
           console.log(response);
         })
         .catch((error) => {
-          console.log(error);
+          // if (error.response && error.status == 404)
+          // if (error.response && error.status == 400) 
+          if (error.response && error.response.status == 400)
+          alert("Error: Title is required field");
+          if (error.response && error.response.status == 500)
+          alert("Error: Error creating item");
+          
     });
     navigate('/Items');
   };

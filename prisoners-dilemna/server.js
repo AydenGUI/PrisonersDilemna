@@ -112,8 +112,14 @@ server.delete("/api/items/delete-item", async(req, res) => {
 
 server.post("/api/items/create-item", async(req, res) => {
 
+  try{
   const item = new ItemModel(req.body);
-
+  if (req.body.title === undefined || req.body.title == '') {
+    throw new Error("Error: Title is required field");
+  }
+  } catch(err) {
+    return res.status(400).send(err.message);
+  }
   try{
       await item.save();
       res.send(item);
@@ -121,7 +127,7 @@ server.post("/api/items/create-item", async(req, res) => {
   catch(err){
       console.log(err);
       console.log(req.body)
-      res.status(500).send(error);
+      res.status(500).send(err);
   }
 });
 
