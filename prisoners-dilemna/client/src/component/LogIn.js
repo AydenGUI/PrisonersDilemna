@@ -38,15 +38,17 @@ function LogIn() {
       axios.post('http://localhost:3001/api/login-users', data)
         .then((response) => {
           console.log(response.data.token);
-          axios.post('http://localhost:3001/tokenIsValid', response.query.token)
-            .then((response) => {
-              navigate("/Items");
-            })
-            .catch((error) => {
-              console.log(error);
-            })
+          navigate("/Items");
+          // axios.post('http://localhost:3001/tokenIsValid', response.query.token)
+          //   .then((response) => {
+          //     navigate("/Items");
+          //   })
+          //   .catch((error) => {
+          //     console.log(error);
+          //   })
         })
         .catch((error) => {
+          alert("Incorrect Password or Username");
           console.log(error);
     });
   };
