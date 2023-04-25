@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
-import './Home.css';
-import React, { useEffect } from 'react';
+import './ListItems.css';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+/*
 function getItems() {
     axios.get('http://localhost:3001/api/items/get-all')
     .then((response) => {
@@ -11,12 +12,31 @@ function getItems() {
     .catch((error) => {
       console.log(error);
 });
-}
+}*/
 
 function ListItems () {
-    useEffect(() => {
-        getItems();
-      }, []);
+    
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:3001/api/items/get-all')
+      .then((response) => {
+        setItems(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  const renderItems = () => {
+    return items.map((item) => (
+      <div className="card">
+        <h3>{item.title}</h3>
+        <p>{item.description}</p>
+        <img src={item.image} alt={item.updated_Date} />
+      </div>
+    ));
+  };
 
     return (
         <div className="Home">
@@ -27,6 +47,7 @@ function ListItems () {
                 </ul>
             </nav>
             <div class="banner">
+            {renderItems()}
             </div>
         </div>
     );
