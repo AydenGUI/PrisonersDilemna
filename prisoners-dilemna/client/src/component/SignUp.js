@@ -49,7 +49,7 @@ function SignUp() {
           }
       });
 
-      navigate('/LoggedIn');
+      navigate('/LogIn');
     });
   };
     
@@ -66,11 +66,11 @@ function SignUp() {
         <form onSubmit={handleSubmit}>
           <label>
             Email:
-            <input type="email" value={email} onChange={handleEmailChange} />
+            <input type="email" value={email} onChange={handleEmailChange} required/>
           </label>
           <label>
             Password:
-            <input type="password" value={password} onChange={handlePasswordChange} />
+            <input type="password" value={password} onChange={handlePasswordChange} required/>
           </label>
           <button type="submit">Sign Up</button>
         </form>
