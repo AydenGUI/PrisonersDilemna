@@ -137,7 +137,7 @@ server.get('/api/items/get-all', async (req, res) => {
 
 server.get('/api/items/show-item/:title', async (req, res) => {
   try {
-    const item = await ItemModel.findOne(req.params.body);
+    const item = await ItemModel.findOne({title: req.params.title});
     res.json(item);
   } catch (err) {
     console.error(err);
