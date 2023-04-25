@@ -1,11 +1,18 @@
-.Home {
+.ListItems {
     text-align: center;
   }
   
+  .cardHolder {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
   .card {
     border: 1px solid #ccc;
     padding: 20px;
     margin-bottom: 20px;
+    background-color: #10105a;
   }
   
   .card h3 {
