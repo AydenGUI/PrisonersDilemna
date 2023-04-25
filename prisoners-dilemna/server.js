@@ -82,12 +82,27 @@ server.post("/api/items/create-item", async(req, res) => {
   }
 });
 
+server.get('/api/items/get-all', async (req, res) => {
+  try {
+    const items = await ItemModel.find();
+    res.json(items);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server Error' });
+  }
+});
+
+// server.put("/api/items/update-item", async(req, res) => {
+  
+//   const item = await Item.findOne({title});
+// });
 mongoose.connect(conn_str,{
   useUnifiedTopology : true,
   useNewUrlParser : true
 })
 .then(() => {
   server.listen(3001, 'localhost'); 
+  console.log('MongoDB Connected'); 
   server.on('listening', function() {
   console.log('Express server started on port %s at %s', server.address().port, server.address().address);
 });
