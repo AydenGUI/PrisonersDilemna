@@ -1,14 +1,18 @@
 import background from '../assests/1203prison.jpg';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import './LoggedIn.css';
 import React, { useState } from 'react';
 import axios from 'axios';
+import {useNavigate} from 'react-router-dom';
 
 
 function LogIn() { 
    
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const navigate = useNavigate();
+  
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -18,10 +22,12 @@ function LogIn() {
     setPassword(event.target.value);
   };
 
-
   // Might need to add async and await for this function
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    navigate("/Items");
+
     // Handle form submission
 
     const data = {
