@@ -65,7 +65,10 @@ function UpdateItemInfo() { //props
     return (
         <div className = 'Home'>
             <nav>
-                 <i><h2>The Prisoners Dilemma</h2></i>
+            <i><h2><Link to="/Items" 
+            style={{ textDecoration: 'none', color: 'black'}}>
+              The Prisoners Dilemma
+            </Link></h2></i>
                  <ul class="nav-links">
                 <li class="nav-item"><Link to="/">Log Out</Link></li>   
                 </ul>
