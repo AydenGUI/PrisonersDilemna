@@ -35,7 +35,7 @@ function LogIn() {
         password: password
       };
       
-      axios.post('http://localhost:3001/api/users', data)
+      axios.post('http://localhost:3001/api/login-users', data)
         .then((response) => {
           console.log(response);
         })

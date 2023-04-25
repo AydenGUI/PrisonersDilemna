@@ -35,7 +35,7 @@ function SignUp() {
         password: hash
       };
       // Make a POST request to the server
-      axios.post('http://localhost:3001/api/users', data)
+      axios.post('http://localhost:3001/api/create-users', data)
         .then((response) => {
           console.log(response);
           if (response.status == 409)
