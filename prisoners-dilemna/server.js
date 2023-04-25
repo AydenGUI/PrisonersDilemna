@@ -68,10 +68,32 @@ server.get('/api/items/get-all', async (req, res) => {
   }
 });
 
-// server.put("/api/items/update-item", async(req, res) => {
+server.get('/api/items/show-item/:title', async (req, res) => {
+  try {
+    const item = await ItemModel.findOne(req.params.body);
+    res.json(item);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server Error' });
+  }
+});
+
+server.put("/api/items/update-item/:title", async(req, res) => {
   
-//   const item = await Item.findOne({title});
-// });
+  const item = await Item.findOne(req.params.body);
+  item.title = req.body.title || item.title;
+  item.description = req.body.description || item.description;
+  if (req.body.updated_date == item.updated_date)
+    item.updated_date = Date.now;
+  item.image = req.body.image || item.image;
+try {
+  const updatedItem = await item.save();
+  console.log(updatedItem);
+  res.status(200).json(updatedItem);
+} catch (err) {
+  res.status(500).json({ message: err.message });
+}
+});
 mongoose.connect(conn_str,{
   useUnifiedTopology : true,
   useNewUrlParser : true
