@@ -39,7 +39,7 @@ function LogIn() {
         .then((response) => {
           // localStorage.setItem("auth-token",response.data.token);
           // navigate("/Items");
-          axios.post('http://localhost:3001/tokenIsValid', response.data.token)
+          axios.post('http://localhost:3001/tokenIsValid', response)
             .then((response) => {
               navigate("/Items");
             })
