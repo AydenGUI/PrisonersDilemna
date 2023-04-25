@@ -10,14 +10,15 @@
   }
 
   .card {
-    width: 30%;
+    width: 300px;
+    height: 200px;
     margin-bottom: 20px;
     background-color: #58587e;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     padding: 10px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
