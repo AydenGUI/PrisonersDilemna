@@ -49,6 +49,7 @@ const CreateItem = (props) => {
         .catch((error) => {
           console.log(error);
     });
+    navigate('/Items');
   };
 
   return (
