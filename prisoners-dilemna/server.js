@@ -86,6 +86,20 @@ server.post("/api/login-users", async(req, res) => {
   }
 });
 
+server.post("/tokenIsValid", async (req, res) => {
+  try {
+    const token = req.header("x-auth-token");
+    if (!token) return res.json(false);
+    const verified = jwt.verify(token, "passwordKey");
+    if (!verified) return res.json(false);
+    const user = await UserModel.findById(verified.id);
+    if (!user) return res.json(false);
+    return res.json(true);
+  } catch (err) {
+    res.status(500).json({err: err.message});
+  }
+});
+
 server.delete("/api/items/delete-item", async(req, res) => {
   console.log(req.query);
   //const items = await ItemModel.find();
