@@ -13,9 +13,8 @@ function UpdateItemInfo() { //props
 
     
     const { title } = useParams();
-    console.log(title);
     const navigate = useNavigate();
-    if (title != undefined) {
+    if (title !== undefined) {
     item.title = title;
     }
     const putUrl = `http://localhost:3001/api/items/update-item/${item.title}`;
@@ -25,12 +24,10 @@ function UpdateItemInfo() { //props
     // console.log(putUrl)
     // console.log(getUrl)
     useEffect(() => {
-      if (item.title != undefined) {
+      if (item.title !== undefined && title !== undefined) {
       axios
         .get(getUrl)
         .then((res) => {
-          console.log(res.data.body);
-          console.log(item.title);
           setItem({
             title: res.data.title,
             description: res.data.description,
@@ -39,7 +36,7 @@ function UpdateItemInfo() { //props
           });
         })
         .catch((err) => {
-          console.log('Error from UpdateItemInfo');
+          alert("Error: Title not found");
         });
       }
       }, [title]);
@@ -57,20 +54,16 @@ function UpdateItemInfo() { //props
         published_date: item.published_date,
         image: item.image,
       };
-      if (data.title != undefined) {
+      if (data.title !== undefined) {
       axios
         .put(putUrl, data)
         .then((res) => {
-          console.log("Title is :");
-          console.log(title);
-          console.log(res.data.body);
           navigate(`/Items`);
         })
         .catch((err) => {
-          console.log('Error in UpdateItemInfo!');
+          alert("Error: Title not found");
         });
       } //if
-    console.log("Hello");
     navigate("/Items");
     return data;
     };
@@ -96,9 +89,6 @@ function UpdateItemInfo() { //props
               </Link></a>
             </div>
             <div className='col-md-8 m-auto'>
-              <script>
-                console.log(title);
-              </script>
               <h1 className='display-4 text-center'>Edit Item</h1>
               <p className='lead text-center'>Update Item's Info</p>
             </div>

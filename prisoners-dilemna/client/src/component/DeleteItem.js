@@ -22,7 +22,9 @@ const DeleteItem = (props) => {
           console.log(response);
         })
         .catch((error) => {
-          console.log(error);
+          if (error.response && error.response.status == 500)
+          alert("Error: Item not found")
+          // console.log(error);
     });
     navigate('/Items');
   };
