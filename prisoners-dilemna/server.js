@@ -32,6 +32,8 @@ server.post("/api/users", async(req, res) => {
 
   const user = new UserModel(req.body);
 
+  
+
   try{
       await user.save();
       res.send(user);
