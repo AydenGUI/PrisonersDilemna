@@ -34,6 +34,7 @@ function ListItems () {
         <h3>{item.title}</h3>
         <p>{item.description}</p>
         <img src={item.image} alt={item.updated_Date} />
+        <p><Link to="/UpdateItems/${item.title}">Update Item</Link></p>
       </div>
     ));
   };
