@@ -9,7 +9,7 @@
     background-size: cover;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     flex-direction: row;
     height: calc(100vh - 73px);
@@ -19,7 +19,7 @@
 
   .card {
     width: 100px;
-    height: 140px;
+    height: 300px;
     margin-bottom: 20px;
     background-color: #58587e;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
