@@ -10,16 +10,24 @@ function UpdateItemInfo() { //props
       published_date: '',
       image: '',
     });
-  
+
     
     const { title } = useParams();
+    console.log(title);
     const navigate = useNavigate();
+    if (title != undefined) {
     item.title = title;
+    }
+    const putUrl = `http://localhost:3001/api/items/update-item/${item.title}`;
+    const getUrl = `http://localhost:3001/api/items/show-item/${item.title}`;
   
+    // console.log("Put and get urls");
+    // console.log(putUrl)
+    // console.log(getUrl)
     useEffect(() => {
       if (item.title != undefined) {
       axios
-        .get(`http://localhost:3001/api/items/show-item/${item.title}`)
+        .get(getUrl)
         .then((res) => {
           console.log(res.data.body);
           console.log(item.title);
@@ -51,9 +59,10 @@ function UpdateItemInfo() { //props
       };
   
       axios
-        .put(`http://localhost:3001/api/items/update-item/${data.title}`, data)
+        .put(putUrl, data)
         .then((res) => {
-
+          console.log("Title is :");
+          console.log(title);
           console.log(res.data.body);
           navigate(`/Items`);
         })
