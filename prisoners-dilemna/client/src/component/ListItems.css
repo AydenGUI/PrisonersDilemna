@@ -18,10 +18,18 @@
 
   .link {
     padding: 10px;
-    text-decoration: none;
-    color: white;
-    background: #10105a;
+    background: #5A5A5A;
     border-radius: 5px;
+
+  }
+
+  .link a {
+    text-decoration: none;
+    color: #303030;
+  }
+
+  .link:hover {
+    background-color: #797979;
   }
 
   .card {
