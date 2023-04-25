@@ -50,13 +50,14 @@ function UpdateItemInfo() { //props
       axios
         .put(`http://localhost:3001/api/items/update-item/${data.title}`, data)
         .then((res) => {
-          // navigate(`/show-item/${data.title}`);
+
           console.log(res.data.body);
         })
         .catch((err) => {
           console.log('Error in UpdateItemInfo!');
         });
     console.log("Hello");
+    navigate("/Items");
     return data;
     };
     return (
