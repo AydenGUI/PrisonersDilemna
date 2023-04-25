@@ -1,6 +1,6 @@
  import React, { useState, useEffect } from 'react';
  import { Link, useParams, useNavigate } from 'react-router-dom';
-// import axios from 'axios';
+ import axios from 'axios';
 import './Home.css'
 
 function UpdateItemInfo() { //props
@@ -12,23 +12,25 @@ function UpdateItemInfo() { //props
     });
   
     const { id } = useParams();
+    // const { title } = useParams();
     const navigate = useNavigate();
   
-    // useEffect(() => {
-    //   axios
-    //     .get(`http://localhost:8082/api/items/${id}`)
-    //     .then((res) => {
-    //       setItem({
-    //         title: res.data.title,
-    //         description: res.data.description,
-    //         published_date: res.data.published_date,
-    //         image: res.data.image,
-    //       });
-    //     })
-    //     .catch((err) => {
-    //       console.log('Error from UpdateItemInfo');
-    //     });
-    // }, [id]);
+    useEffect(() => {
+      axios
+        .get(`http://localhost:3001/api/items/show-item/${item.title}`)
+        .then((res) => {
+          console.log(res.data.body);
+          setItem({
+            title: res.data.title,
+            description: res.data.description,
+            published_date: res.data.published_date,
+            image: res.data.image,
+          });
+        })
+        .catch((err) => {
+          console.log('Error from UpdateItemInfo');
+        });
+    }, [id]);
   
     const onChange = (e) => {
       setItem({ ...item, [e.target.name]: e.target.value });
@@ -44,18 +46,18 @@ function UpdateItemInfo() { //props
         image: item.image,
       };
   
-    //   axios
-    //     .put(`http://localhost:8082/api/items/${id}`, data)
-    //     .then((res) => {
-    //       navigate(`/show-item/${id}`);
-    //     })
-    //     .catch((err) => {
-    //       console.log('Error in UpdateItemInfo!');
-    //     });
+      axios
+        .put(`http://localhost:3001/api/items/update-item/${data.title}`, data)
+        .then((res) => {
+          // navigate(`/show-item/${data.title}`);
+          console.log(res.data.body);
+        })
+        .catch((err) => {
+          console.log('Error in UpdateItemInfo!');
+        });
     console.log("Hello");
     return data;
     };
-  
     return (
         <div className = 'Home'>
             <nav>
