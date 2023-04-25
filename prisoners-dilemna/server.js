@@ -134,11 +134,6 @@ server.put("/api/items/update-item/:title", async(req, res) => {
   } else {
     res.status(404).send({ message: 'Item not found' });
   }
-  // item.title = req.params.title || req.body.title || item.title;
-  // item.description = req.body.description || item.description;
-  // if (req.body.updated_date == item.updated_date)
-  //   item.updated_date = Date.now;
-  // item.image = req.body.image || item.image;
 if (item)
   try {
   const updatedItem = await item.save();
