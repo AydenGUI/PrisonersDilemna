@@ -10,6 +10,7 @@ import CreateItem from './component/CreateItem';
 import DeleteItem from './component/DeleteItem';
 import SignUp from './component/SignUp';
 import LogIn from './component/LogIn';
+import PageNotFound from './component/PageNotFound';
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route path='/UpdateItems' element={<UpdateItemInfo/>}/>
         <Route path='/UpdateItems/:title' element={<UpdateItemInfo/>}/>
         <Route exact path='/DeleteItems' element={<DeleteItem/>}/>
+        <Route path='*' element={<PageNotFound/>}/>
         </Routes>
       </div>
     </Router>
