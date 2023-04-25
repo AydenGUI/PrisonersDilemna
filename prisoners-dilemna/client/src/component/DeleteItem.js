@@ -24,6 +24,7 @@ const DeleteItem = (props) => {
         .catch((error) => {
           console.log(error);
     });
+    navigate('/Items');
   };
 
   return (
