@@ -72,10 +72,9 @@ server.post("/api/login-users", async(req, res) => {
       console.log("PASSWORD FAILED");
       return res.status(400).send({message: "incorrect password"});
     }
-    console.log("success?")
     //idk about the id
     const token = jwt.sign({id: user._id}, "passwordKey");
-    res.json({token, user: {id: user._id, email: user.email}}); 
+    res.json({token: token, user: {id: user._id, email: user.email}}); 
 
     } 
   catch (err) {
@@ -88,12 +87,24 @@ server.post("/api/login-users", async(req, res) => {
 
 server.post("/tokenIsValid", async (req, res) => {
   try {
+    
     const token = req.header("x-auth-token");
-    if (!token) return res.json(false);
+    console.log(req.body);
+    if (!token)  {
+      console.log("invalid token");
+      return res.json(false);
+   } 
     const verified = jwt.verify(token, "passwordKey");
-    if (!verified) return res.json(false);
+    if (!verified)  {
+      console.log("not verified");
+      return res.json(false);
+   } 
     const user = await UserModel.findById(verified.id);
-    if (!user) return res.json(false);
+    if (!user)  {
+      console.log("user not found");
+      return res.json(false);
+   } 
+    console.log("YES BB");
     return res.json(true);
   } catch (err) {
     res.status(500).json({err: err.message});

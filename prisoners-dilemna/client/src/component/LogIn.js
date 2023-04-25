@@ -26,7 +26,7 @@ function LogIn() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    navigate("/Items");
+
 
     // Handle form submission
 
@@ -37,7 +37,14 @@ function LogIn() {
       
       axios.post('http://localhost:3001/api/login-users', data)
         .then((response) => {
-          console.log(response);
+          console.log(response.data.token);
+          axios.post('http://localhost:3001/tokenIsValid', response.query.token)
+            .then((response) => {
+              navigate("/Items");
+            })
+            .catch((error) => {
+              console.log(error);
+            })
         })
         .catch((error) => {
           console.log(error);
