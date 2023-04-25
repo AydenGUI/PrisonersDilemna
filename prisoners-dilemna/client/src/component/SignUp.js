@@ -38,9 +38,14 @@ function SignUp() {
       axios.post('http://localhost:3001/api/users', data)
         .then((response) => {
           console.log(response);
+          prompt(response);
         })
         .catch((error) => {
-          console.log(error);
+          if (error.response == 409) {
+            console.log("User already exsists");
+          } else {
+            console.log(error);
+          }
       });
 
       navigate('/LoggedIn');
