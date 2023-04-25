@@ -2,7 +2,7 @@
     text-align: center;
   }
   
-  .banner {
+  .listBanner {
     background-image: url("../assests/1203prison.jpg");
     background-position: center;
     background-repeat: no-repeat;
@@ -19,7 +19,7 @@
 
   .card {
     width: 100px;
-    height: 70px;
+    height: 140px;
     margin-bottom: 20px;
     background-color: #58587e;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
