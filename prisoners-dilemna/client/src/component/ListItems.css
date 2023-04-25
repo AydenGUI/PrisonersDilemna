@@ -6,16 +6,21 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-items: flex-start;
-    margin-top: 20px;
+    align-items: center;
   }
 
   .card {
-    border: 1px solid #ccc;
-    padding: 20px;
+    width: 30%;
     margin-bottom: 20px;
-    background-color: #10105a;
-  }
+    background-color: #58587e;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
   
   .card h3 {
     font-size: 20px;
@@ -29,6 +34,8 @@
   
   .card img {
     max-width: 100%;
+    border-radius: 10px;
+    margin-bottom: 10px;
   }
   
 
