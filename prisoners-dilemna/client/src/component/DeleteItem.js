@@ -46,9 +46,9 @@ const DeleteItem = (props) => {
         <div className='row'>
           <div className='col-md-8 m-auto'>
             <br />
-            <Link to='/ListItems' className='btn btn-outline-warning float-left'>
+            <a class="goitem"><Link to='/ListItems' className='btn btn-outline-warning float-left'>
               Show Item List
-            </Link>
+            </Link></a>
           </div>
           <div className='col-md-8 m-auto'>
             <h1 className='display-4 text-center'>Delete Item</h1>
