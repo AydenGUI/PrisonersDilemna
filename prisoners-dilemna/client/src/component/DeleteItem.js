@@ -1,41 +1,29 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css'
-//import axios from 'axios';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const DeleteItem = (props) => {
   // Define the state with useState hook
   const navigate = useNavigate();
-  const [item, setItem] = useState({
-    title: '',
-    description: '',
-    published_date: '',
-    image: '',
-  });
+  const [title, setTitle] = useState('');
 
-  const onChange = (e) => {
-    setItem({ ...item, [e.target.name]: e.target.value });
+  const onChange = (event) => {
+    setTitle(event.target.value);
   };
 
-   const onSubmit = (e) => {
-    e.preventDefault();
-  //    axios
-  //      .post('http://localhost:8082/api/items', item)
-  //      .then((res) => {
-  //        setItem({
-  //          title: '',
-  //         description: '',
-  //         published_date: '',
-  //         image: '',
-  //       });
+   const onSubmit = (event) => {
+    event.preventDefault();
+    // Handle form submission
 
-  //       // Push to /
-  //      navigate('/');
-  //     })
-  //    .catch((err) => {
-  //      console.log('Error in CreateItem!');
-  //   });
+      axios.delete('http://localhost:3001/api/items/delete-item', {params: {title: title}})
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+    });
   };
 
   return (
@@ -66,7 +54,7 @@ const DeleteItem = (props) => {
                   placeholder='Title of the Item'
                   name='title'
                   className='form-control'
-                  value={item.title}
+                  value={title}
                   onChange={onChange}
                 />
               </div>

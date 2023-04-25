@@ -43,6 +43,30 @@ server.post("/api/users", async(req, res) => {
   }
 });
 
+server.delete("/api/items/delete-item", async(req, res) => {
+  console.log(req.query);
+  //const items = await ItemModel.find();
+  const titleToDelete = req.query.title;
+
+  try {
+    const deleteItem = await ItemModel.findOneAndDelete({ title: titleToDelete });
+    if (!deleteItem) {
+      return res.status(404).send(`Item with title "${title}" not found`);
+    }
+    res.send('Item deleted successfully');
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
+  // const index = items.findIndex(item => item.title === titleToDelete);
+  // if (index !== -1) {
+  //   ItemModel.splice(index, 1);
+  //   res.send(`Item with title "${titleToDelete}" has been deleted`);
+  // } else {
+  //   res.status(404).send(`Item with title "${titleToDelete}" not found`);
+  // }
+
+});
+
 server.post("/api/items/create-item", async(req, res) => {
 
   const item = new ItemModel(req.body);
