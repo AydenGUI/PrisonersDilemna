@@ -142,18 +142,12 @@ server.post("/api/items/create-item", async(req, res) => {
   if (req.body.title === undefined || req.body.title == '') {
     throw new Error("Error: Title is required field");
   }
+  await item.save();
+  res.send(item);
   } catch(err) {
     return res.status(400).send(err.message);
   }
-  try{
-      await item.save();
-      res.send(item);
-  }
-  catch(err){
-      console.log(err);
-      console.log(req.body)
-      res.status(500).send(err);
-  }
+ 
 });
 
 server.get('/api/items/get-all', async (req, res) => {
